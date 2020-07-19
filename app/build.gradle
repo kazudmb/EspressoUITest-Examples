@@ -54,17 +54,13 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
     implementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$androidx_test_espresso"
 
     // androidx.test
     def androidx_test = "1.1.0"
     androidTestImplementation "androidx.test:runner:$androidx_test"
     androidTestImplementation "androidx.test:core:$androidx_test"
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
-
-    // androidx.fragment
-    def fragment_version = "1.2.0-rc01" // must use for new factory stuff
-    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
-    implementation "androidx.fragment:fragment:$fragment_version"
 
     //glide
     def glide_version = "4.9.0"
