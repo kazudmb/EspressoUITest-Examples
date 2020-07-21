@@ -2,13 +2,25 @@ package com.dmb.espressouitest_examples.ui.movie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.request.RequestOptions
 import com.dmb.espressouitest_examples.R
 import com.dmb.espressouitest_examples.data.source.MoviesDataSource
 import com.dmb.espressouitest_examples.data.source.MoviesRemoteDataSource
 import com.dmb.espressouitest_examples.factory.MovieFragmentFactory
+import com.dmb.espressouitest_examples.ui.UICommunicationListener
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    UICommunicationListener
+{
+
+    override fun loading(isLoading: Boolean) {
+        if (isLoading)
+            progress_bar.visibility = View.VISIBLE
+        else
+            progress_bar.visibility = View.INVISIBLE
+    }
 
     // dependencies (typically would be injected with dagger)
     lateinit var requestOptions: RequestOptions
@@ -46,5 +58,7 @@ class MainActivity : AppCompatActivity() {
             moviesDataSource = MoviesRemoteDataSource()
         }
     }
+
+
 
 }
