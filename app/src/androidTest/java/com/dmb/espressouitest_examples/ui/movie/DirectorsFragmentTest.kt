@@ -18,12 +18,11 @@ class DirectorsFragmentTest {
     @Test
     fun test_isDirectorsListVisible() {
 
-        // SETUP
+        // GIVEN
         val directors = arrayListOf("R.J. Stewart", "James Vanderbilt")
-        val fragmentFactory = MovieFragmentFactory()
+        val fragmentFactory = MovieFragmentFactory(null, null)
         val bundle = Bundle()
         bundle.putStringArrayList("args_directors", directors)
-
         val scenario = launchFragmentInContainer<DirectorsFragment>(
             fragmentArgs = bundle,
             factory = fragmentFactory
@@ -31,6 +30,8 @@ class DirectorsFragmentTest {
 
         // VERIFY
         onView(withId(R.id.directors_text))
-            .check(matches(withText(DirectorsFragment.stringBuilderForDirectors(directors))))
+            .check(matches(withText(
+                DirectorsFragment.stringBuilderForDirectors(directors)
+            )))
     }
 }

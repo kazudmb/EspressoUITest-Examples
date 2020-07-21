@@ -18,12 +18,11 @@ class StarActorsFragmentTest {
     @Test
     fun test_isStarActorsListVisible() {
 
-        // SETUP
+        // GIVEN
         val starActors = arrayListOf("Dwayne Johnson", "Seann William Scott", "Rosario Dawson", "Christopher Walken")
-        val fragmentFactory = MovieFragmentFactory()
+        val fragmentFactory = MovieFragmentFactory(null, null)
         val bundle = Bundle()
         bundle.putStringArrayList("args_actors", starActors)
-
         val scenario = launchFragmentInContainer<StarActorsFragment>(
             fragmentArgs = bundle,
             factory = fragmentFactory
@@ -31,6 +30,8 @@ class StarActorsFragmentTest {
 
         // VERIFY
         onView(withId(R.id.star_actors_text))
-            .check(matches(withText(StarActorsFragment.stringBuilderForStarActors(starActors))))
+            .check(matches(withText(
+                StarActorsFragment.stringBuilderForStarActors(starActors)
+            )))
     }
 }
