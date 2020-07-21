@@ -21,6 +21,7 @@ import com.dmb.espressouitest_examples.data.source.MoviesRemoteDataSource
 import com.dmb.espressouitest_examples.factory.MovieFragmentFactory
 import com.dmb.espressouitest_examples.ui.movie.MoviesListAdapter.*
 import com.dmb.espressouitest_examples.util.EspressoIdlingResource
+import com.dmb.espressouitest_examples.util.EspressoIdlingResourceRule
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.After
@@ -35,18 +36,21 @@ class MovieListFragmentTest {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @get:Rule
+    val espressoIdlingResourceRule = EspressoIdlingResourceRule()
+
     val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
-    @Before
-    fun registerIdlingResource() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
-    }
-
-    @After
-    fun unregisterIdlingResource() {
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-    }
+//    @Before
+//    fun registerIdlingResource() {
+//        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+//    }
+//
+//    @After
+//    fun unregisterIdlingResource() {
+//        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+//    }
 
     @Test
     fun test_isListFragmentVisible_onAppLaunch() {
