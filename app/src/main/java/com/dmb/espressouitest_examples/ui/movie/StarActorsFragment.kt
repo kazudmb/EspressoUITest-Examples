@@ -46,4 +46,5 @@ class StarActorsFragment : Fragment(){
             return sb.toString()
         }
     }
+
 }
